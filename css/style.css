@@ -1,0 +1,13 @@
+body {
+  background: #f0e6d2;
+  font-family: Arial;
+}
+
+h1 {
+  color: #5a3e36;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
