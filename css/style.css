@@ -1,7 +1,33 @@
 /* ===================================================
-   EFECTOS DE FONDO Y PARALLAX
+   VARIABLES DE COLOR (Si deseas usarlas en todo el sitio)
    =================================================== */
-   body::before {
+   :root {
+    --primary-color: #5a3e36; /* Ejemplo: color café */
+    --secondary-color: #846054; /* Tonalidad más clara para hovers */
+    --white: #fff;
+    --fondo-principal: #f0e6d2;
+  }
+  
+  /* ===================================================
+     RESET BÁSICO (Opcional, si no usas otro reset)
+     =================================================== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* ===================================================
+     FONDO DEL BODY Y ANIMACIÓN SUTIL DE PARALLAX
+     =================================================== */
+  body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: var(--fondo-principal);
+  }
+  
+  body::before {
     content: '';
     position: fixed;
     top: 0;
@@ -22,7 +48,7 @@
   }
   
   /* ===================================================
-     EFECTOS PARA IMAGENES DINÁMICAS
+     IMÁGENES PARALLAX (sutil animación al hacer hover)
      =================================================== */
   .img-parallax {
     max-width: 400px;
@@ -32,6 +58,8 @@
     transform-style: preserve-3d;
     transition: all 0.5s ease;
     cursor: pointer;
+    /* Efecto de aparición suave */
+    animation: fadeInUp 1s ease-out forwards;
   }
   
   .img-parallax:hover {
@@ -43,127 +71,194 @@
     box-shadow: 0 15px 40px rgba(90, 62, 54, 0.3);
   }
   
-  /* Efecto de aparición suave */
   @keyframes fadeInUp {
-    from {
+    0% {
       opacity: 0;
       transform: translateY(20px);
     }
-    to {
+    100% {
       opacity: 1;
       transform: translateY(0);
     }
   }
   
-  .img-parallax {
-    animation: fadeInUp 1s ease-out forwards;
-  }
-  
   /* ===================================================
-     AJUSTES RESPONSIVOS
+     EFECTOS RESPONSIVOS
      =================================================== */
   @media (max-width: 768px) {
     .img-parallax {
       max-width: 280px;
       margin: 1.5rem auto;
     }
-    
+  
     body::before {
       animation-duration: 30s;
     }
   }
-  /* Carrusel Personalizado */
-.carousel-caption {
-  background: rgba(90, 62, 54, 0.8);
-  padding: 2rem;
-  border-radius: 1rem;
-}
-
-/* Videos Responsivos */
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-}
-
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 1rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-/* Tarjetas de Productos */
-.producto-card {
-  transition: transform 0.3s ease;
-  border: none;
-}
-
-.producto-card:hover {
-  transform: translateY(-10px);
-}
-
-.precio {
-  color: var(--primary-color);
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* Testimonios */
-.testimonio-card {
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 1rem;
-  text-align: center;
-}
-
-.testimonio-card img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin: 0 auto 1rem;
-}
-
-/* Blog */
-.blog-card {
-  background: var(--white);
-  border-radius: 1rem;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.blog-card:hover {
-  transform: scale(1.03);
-}
-
-.blog-card img {
-  height: 200px;
-  object-fit: cover;
-}
-
-.blog-content {
-  padding: 1.5rem;
-}
-
-.meta {
-  color: #666;
-  font-size: 0.9rem;
-}
-/* Footer Legal */
-.legal-footer {
-  margin-top: 5rem;
-  border-top: 2px solid var(--primary-color);
-}
-
-.legal-footer a {
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.legal-footer a:hover {
-  color: var(--secondary-color) !important;
-}
+  
+  /* ===================================================
+     AJUSTES PARA CARRUSEL DE BOOTSTRAP
+     =================================================== */
+  .carousel-caption {
+    background: rgba(90, 62, 54, 0.8);
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+  
+  /* ===================================================
+     CONTENEDORES DE VIDEO
+     =================================================== */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporción 16:9 */
+    height: 0;
+    overflow: hidden;
+  }
+  
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* ===================================================
+     TARJETAS DE PRODUCTOS
+     =================================================== */
+  .producto-card {
+    transition: transform 0.3s ease;
+    border: none;
+  }
+  
+  .producto-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .precio {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* ===================================================
+     TESTIMONIOS
+     =================================================== */
+  .testimonio-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+  }
+  
+  .testimonio-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    object-fit: cover; /* Asegura que las imágenes sean responsivas */
+  }
+  
+  /* ===================================================
+     BLOG
+     =================================================== */
+  .blog-card {
+    background: var(--white);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .blog-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .blog-card img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .blog-content {
+    padding: 1.5rem;
+  }
+  
+  .meta {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  /* ===================================================
+     FOOTER LEGAL
+     =================================================== */
+  .legal-footer {
+    margin-top: 5rem;
+    border-top: 2px solid var(--primary-color);
+  }
+  
+  .legal-footer a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .legal-footer a:hover {
+    color: var(--secondary-color) !important;
+  }
+  
+  /* ===================================================
+     SECCIONES ESPECÍFICAS
+     =================================================== */
+  .privacy-container,
+  .terms-container {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* ===================================================
+     BOTÓN "VOLVER AL INICIO"
+     =================================================== */
+  .back-to-top {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-to-top:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  /* ===================================================
+     MEJORAS ADICIONALES
+     =================================================== */
+  /* Asegura que los enlaces sean accesibles */
+  a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+  
+  /* Mejora visual para botones */
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
