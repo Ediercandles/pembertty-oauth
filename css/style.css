@@ -1,93 +1,147 @@
-/* Reseteo básico para mantener estilos coherentes */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Estilos generales del cuerpo */
-body {
-  background-color: #f0e6d2; /* color de fondo */
-  font-family: Arial, sans-serif; /* fallback en caso de no tener Arial */
-  color: #333; /* color de texto general */
-  line-height: 1.6; /* mejora la legibilidad */
-}
-
-/* Encabezados */
-h1,
-h2,
-h3 {
-  color: #5a3e36;
-  margin-bottom: 1rem;
-}
-
-/* Secciones o secciones generales */
-section {
-  padding: 2rem 1rem;
-}
-
-/* Contenedor principal */
-.container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1rem;
-  background-color: #fff; /* si deseas un fondo distinto */
-}
-
-/* ──────────────────────────────────────────────────────
-    HEADER (Título + imagen central)
-   ────────────────────────────────────────────────────── */
-.header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-/* Imagen en el header (vela, logo, etc.) */
-.header .img-vela {
-  max-width: 250px;
-  height: auto;
-  margin: 20px auto;
-  display: block;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
-  /* Si quieres animación al pasar el ratón, puedes reusar el hover de abajo */
-}
-
-/* Clases para tu galería (solo si usas una sección gallery) */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
-}
-
-/* Ajustes para las imágenes en la galería */
-.img-vela {
-  max-width: 250px; /* Ajusta el tamaño */
-  height: auto; /* Mantiene la proporción */
-  margin: 20px auto; /* Centra la imagen de forma horizontal */
-  display: block; /* Asegura que las propiedades de margin se apliquen correctamente */
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3)); /* Sombra suave */
-  transition: transform 0.2s ease; /* Efecto al pasar el mouse */
-}
-
-/* Efecto hover para .img-vela */
-.img-vela:hover {
-  transform: scale(1.05);
-}
-
-/* Clases para btn, si no usas Bootstrap */
-.btn {
-  background-color: #5a3e36;
-  color: #fff;
-  padding: 0.75rem 1.25rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  margin-top: 1rem;
-  display: inline-block;
-}
-
-.btn:hover {
-  background-color: #846054;
-}
+/* ===================================================
+   VARIABLES CSS (Facilitan mantenimiento y coherencia)
+   =================================================== */
+   :root {
+    --primary-color: #5a3e36;     /* Color principal */
+    --secondary-color: #846054;   /* Color secundario */
+    --background-color: #f0e6d2;  /* Color de fondo */
+    --text-color: #333;           /* Color de texto principal */
+    --white: #fff;                /* Blanco puro */
+    --transition: all 0.3s ease;  /* Transición estándar */
+  }
+  
+  /* ===================================================
+     RESET Y ESTILOS BASE (Mobile First Approach)
+     =================================================== */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;      /* Scroll suave */
+    font-size: 16px;              /* Base para unidades REM */
+  }
+  
+  body {
+    background-color: var(--background-color);
+    font-family: 'Arial', 'Helvetica Neue', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* ===================================================
+     TIPOGRAFÍA Y ENCABEZADOS
+     =================================================== */
+  h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+  
+  /* ===================================================
+     LAYOUT PRINCIPAL
+     =================================================== */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background-color: var(--white);
+    flex-grow: 1;
+  }
+  
+  /* ===================================================
+     COMPONENTES REUTILIZABLES
+     =================================================== */
+  /* Tarjetas */
+  .card {
+    background: var(--white);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    transition: var(--transition);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Imágenes responsivas */
+  .img-responsive {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.25rem;
+  }
+  
+  /* Galería mejorada */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  /* ===================================================
+     EFECTOS ESPECÍFICOS
+     =================================================== */
+  /* Efecto hover para imágenes */
+  .img-vela {
+    max-width: 250px;
+    margin: 1.25rem auto;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+    transition: var(--transition);
+  }
+  
+  .img-vela:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.2));
+  }
+  
+  /* ===================================================
+     MEDIA QUERIES (Responsive Design)
+     =================================================== */
+  @media (min-width: 768px) {
+    .container {
+      padding: 2rem;
+    }
+    
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.25rem; }
+    
+    .gallery {
+      gap: 2rem;
+      padding: 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .img-vela {
+      max-width: 300px;
+    }
+  }
+  
+  /* ===================================================
+     MEJORAS DE ACCESIBILIDAD
+     =================================================== */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+  
+  :focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+  }
